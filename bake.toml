@@ -6,9 +6,11 @@ type = "lib"
 [language]
 c = "c17"
 
-# GitHub's auto-generated tag archives are not byte-stable across CDN
-# nodes (symlink-bearing trees hash differently per region); the release
-# asset is uploaded once and identical everywhere.
+# Release asset rather than the auto-generated tag archive: uploaded
+# bytes are immutable, so this URL fetches and hashes identically
+# forever. (The original lock mismatch across machines was bake's tree
+# hash counting permission bits — fixed there — but pinned bytes remain
+# strictly more robust.)
 [dependencies]
 upstream = { url = "https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz" }
 
