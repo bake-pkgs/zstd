@@ -6,8 +6,11 @@ type = "lib"
 [language]
 c = "c17"
 
+# GitHub's auto-generated tag archives are not byte-stable across CDN
+# nodes (symlink-bearing trees hash differently per region); the release
+# asset is uploaded once and identical everywhere.
 [dependencies]
-upstream = { url = "https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz" }
+upstream = { url = "https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz" }
 
 # Single-threaded (no ZSTD_MULTITHREAD); legacy formats and dictBuilder are
 # not part of the port.
